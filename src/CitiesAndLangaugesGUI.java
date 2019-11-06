@@ -100,7 +100,7 @@ public class CitiesAndLangaugesGUI extends Application {
         String password = DB_Settings.getPassword();
         String username = DB_Settings.geUsername();
         Connection connection = DriverManager.getConnection
-                ("jdbc:mysql://localhost/world", username, password);
+                ("jdbc:mysql://localhost/minecraft", username, password);
         System.out.println("Database connected.");
 
         // Create a statement
@@ -112,23 +112,22 @@ public class CitiesAndLangaugesGUI extends Application {
         String language = languageTextField.getText();
 
         String queryString =
-                "SELECT city.name, country.Name, countrylanguage.Language, Percentage\n" +
-                        "FROM world.country, world.countrylanguage, world.city\n" +
-                        "WHERE country.Code = countrylanguage.CountryCode\n" +
-                        "AND country.Code = city.CountryCode\n" +
-                        "AND city.Name = '" + city + "'\n" +
-                        "AND countrylanguage.Language = '" + language + "';";
+                "select toolName, realDmg, level from toolsjoin\n" +
+                        "    join dmgtable d on toolsjoin.dmgId = d.id\n" +
+                        "    join miningtable m on toolsjoin.miningId = m.id\n" +
+                        "    join tools t on toolsjoin.toolId = t.id\n" +
+                        "    where toolName like '%"+city+"%'\n" +
+                        "    and realDmg like '%"+language+"%';";
 
         ResultSet resultSet = stmt.executeQuery(queryString);
 
         if (resultSet.next()) {
-            String cityName = resultSet.getString("city.name");
-            String countryLanguage = resultSet.getString("countrylanguage.Language");
-            String percentage = resultSet.getString("Percentage");
+            /*String cityName = resultSet.getString("city.name");*/
+            String countryLanguage = resultSet.getString("realDmg");
+            String percentage = resultSet.getString("toolName");
 
             // Display result in a label
-            resultLabel.setText("     " + percentage + "% of the citizens in " +
-                    cityName + " speaks " + countryLanguage + ".");
+            resultLabel.setText("   your tool is " + percentage + " and it does " + countryLanguage +" Damage.");
         } else {
             resultLabel.setText("City and/or language not found.");
         }

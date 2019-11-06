@@ -10,7 +10,7 @@
 public class DB_Settings {
 
     public static String getPassword(){
-        return "CodeWarrior8";
+        return "nicki1119";
     }
 
     public static String geUsername(){
