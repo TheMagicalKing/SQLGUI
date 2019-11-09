@@ -129,7 +129,7 @@ public class CitiesAndLangaugesGUI extends Application {
             // Display result in a label
             resultLabel.setText("   your tool is " + percentage + " and it does " + countryLanguage +" Damage.");
         } else {
-            resultLabel.setText("City and/or language not found.");
+            resultLabel.setText("There is no tool with that name or damage.");
         }
     }
 
