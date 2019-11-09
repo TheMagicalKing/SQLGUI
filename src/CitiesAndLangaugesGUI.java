@@ -72,8 +72,8 @@ public class CitiesAndLangaugesGUI extends Application {
 
         Button showGradeButton = new Button("How many speaks this language?");
         HBox hBox = new HBox(5);
-        hBox.getChildren().addAll(new Label("City"), cityTextField,
-                new Label("Language"), languageTextField, (showGradeButton));
+        hBox.getChildren().addAll(new Label("Tool name"), cityTextField,
+                new Label("Damage (Needs Specific damage(2,4 or 8))"), languageTextField, (showGradeButton));
 
         VBox vBox = new VBox(10);
         vBox.getChildren().addAll(hBox, resultLabel);
